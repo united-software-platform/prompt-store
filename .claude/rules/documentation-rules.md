@@ -120,12 +120,12 @@
 **[DOC-016]** Код оформляется исключительно в fenced code blocks с обязательным указанием языка.
 
 ````markdown
-```php
-echo "Привет";
+```python
+print("Привет")
 ```
 
 ```bash
-composer install
+git submodule update --init
 ```
 ````
 
