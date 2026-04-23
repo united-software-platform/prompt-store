@@ -1,108 +1,66 @@
-# 🧠 prompt-store
+# Prompt Store
 
-Коллекция системных и инженерных промтов для проектирования, ревью и автоматизации.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## 🎯 Назначение
-
-`prompt-store` используется для стандартизации и ускорения работы с архитектурными и инженерными задачами.  
-Здесь собраны шаблоны промтов для:
-- проектирования архитектуры (Clean Architecture, DDD, CQRS);
-- ревью кода и проектных решений;
-- настройки CI/CD и интеграций;
-- генерации технической документации.
-
-Каждый промт описывает:
-- **цель** — какую задачу решает;
-- **входные данные** — формат и ограничения;
-- **ожидаемый результат** — код, схема, анализ, документ.
+Коллекция промптов и правил для AI-ассистентов в PHP/Symfony-разработке, распространяемая как Composer-пакет.
 
 ---
 
-## 📁 Структура репозитория
+## Навигация
+
+- [Структура](#структура)
+- [Установка](#установка)
+- [Автоматическая синхронизация](#автоматическая-синхронизация)
+- [Лицензия](#лицензия)
+
+---
+
+## Структура
 
 ```
-prompt-store/
-│
-├── README.md
-├── CONTRIBUTING.md
-├── LICENSE
-│
-├── 00-system/
-│   ├── base.md
-│   ├── format_rules.md
-│   └── validation_templates.md
-│
-├── 01-architecture/
-│   ├── overview-design.md
-│   ├── domain-modeling.md
-│   ├── integration-patterns.md
-│   ├── clean-architecture.md
-│   └── review-checklist.md
-│
-├── 02-development/
-│   ├── php/
-│   │   ├── dto-generator.md
-│   │   ├── repository-design.md
-│   │   └── service-layer.md
-│   ├── python/
-│   │   └── cli-tooling.md
-│   └── js/
-│       └── api-client.md
-│
-├── 03-devops/
-│   ├── ci-cd.md
-│   ├── deployment-strategies.md
-│   ├── docker.md
-│   ├── monitoring.md
-│   └── gitlab-runner.md
-│
-├── 04-documentation/
-│   ├── api-docs.md
-│   ├── architecture-overview-template.md
-│   └── readme-template.md
-│
-└── 05-examples/
-    ├── full-workflow.md
-    ├── integration-flow.md
-    └── review-session.md
+rules/      — правила и соглашения (стиль кода, архитектура, документация)
+skills/     — навыки для AI-ассистентов
+commands/   — команды для Claude Code
+agents/     — конфигурации AI-агентов
 ```
 
 ---
 
-## 🧩 Формат промта
+## Установка
 
-Каждый файл должен содержать структурированное описание:
+**1. Подключить пакет:**
 
-```markdown
-# Название промта
-
-## Цель
-Краткое описание задачи и контекста.
-
-## Входные данные
-Описание параметров, которые должны быть переданы.
-
-## Ожидаемый результат
-Что именно должен вернуть ИИ (код, схема, анализ и т.д.).
-
-## Пример использования
+```bash
+composer require united-software-platform/prompt-store
 ```
-> [описание задачи]
+
+**2. Синхронизировать промпты в `.claude/`:**
+
+```bash
+vendor/bin/sync-prompts
 ```
-Ответ должен включать:
-- [список ожидаемых элементов]
+
+Скрипт предложит выбрать типы (`skills`, `commands`, `rules`, `agents`) и категории внутри каждого из них. Для установки всего без вопросов:
+
+```bash
+vendor/bin/sync-prompts --all
 ```
 
 ---
 
-## 🤝 Контрибьюция
+## Автоматическая синхронизация
 
-1. Создайте ветку `feature/название`
-2. Добавьте или обновите `.md` файл с промтом
-3. Создайте PR с кратким описанием изменений
+Чтобы промпты обновлялись автоматически при каждом `composer install` и `composer update`, добавьте в `composer.json` проекта:
+
+```json
+"scripts": {
+    "post-install-cmd": ["vendor/bin/sync-prompts --all"],
+    "post-update-cmd":  ["vendor/bin/sync-prompts --all"]
+}
+```
 
 ---
 
-## 📜 Лицензия
+## Лицензия
 
-MIT License. Репозиторий свободен для использования и модификации при сохранении указания авторства.
+MIT

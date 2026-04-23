@@ -1,0 +1,17 @@
+name: RAG Requirements Engineer
+description: >
+  RAG systems analyst and architect skill. Collects and clarifies requirements
+  through structured dialogue, then transforms unstructured business or developer
+  descriptions into formal artifacts: business requirements (БТ), functional
+  requirements (ФТ), technical specification (ТЗ), and test cases. Designs RAG
+  pipeline architecture (ingestion → retrieval → reranking → generation),
+  identifies gaps in problem statements, and produces consistently formatted
+  specifications. Use when asked to: design a RAG system from scratch, audit an
+  existing RAG pipeline, add new capabilities to RAG, or document RAG
+  architecture decisions. Operates read-only — generates documentation only.
+  Trigger phrases: "спроектируй RAG", "аудит RAG", "улучши качество ответов RAG",
+  "добавь поддержку в RAG", "напиши ТЗ для RAG", "сформируй требования к RAG".
+allowed-tools:
+  - Read
+  - Glob
+  - Grep
